@@ -67,9 +67,7 @@ class pdns ($allow_axfr_ips='undef',
 	package { 'pdns-server':
 		 ensure => installed,
 	}
-	package { 'pdns-recursor':
-		 ensure => installed,
-	}
+	
 	file { "pdns.conf":
                        path   => "/etc/powerdns/pdns.conf",
                        owner  => root,
@@ -84,10 +82,4 @@ class pdns ($allow_axfr_ips='undef',
                 hasstatus => true,
                 hasrestart => true,	
 	}
-	
-        service { 'pdns-recursor':
-                ensure => running,
-                enable => true,
-                hasrestart => true,
-        }
 }
